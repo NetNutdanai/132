@@ -17,7 +17,7 @@
             <td><input type="text"></td>
         </tr>
         <tr>
-            <td>วัน/เดือน/ปี</td>
+            <td>วัน/เดือน/ปีเกิด</td>
             <td><input type="date"/></td>
         </tr>
         <tr>
@@ -44,17 +44,45 @@
         </tr>
         <tr>
             <td>ที่อยู่</td>
+            <td><textarea rows="4"
+                placeholder="กรุณาป้อนข้อมูล"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>สีที่ชอบ</td>
             <td>
-                <input type="checkbox"
-                name="my_checkbox">Checkbox
-                <br>
-                <input type="checkbox"
-                name="my_checkbox">Checkbox
+                <select>
+                    <option value="" disabled selected>-</option>
+                    <option>สีแดง</option>
+                    <option>สีน้ำเงิน</option>
+                    <option>สีเหลือง</option>
+                    <option>สีดำ</option>
+                    <option>สีขาว</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>แนวเพลงที่ชอบ</td>
+            <td>
+                <input id="For_live"
+                    type="radio"
+                    name="favmusic"/>
+                <label for="For_live">เพื่อชีวิต</label>
+                <input id="Luk_Thung"
+                    type="radio"
+                    name="favmusic"/>
+                <label for="Luk_Thung">ลูกทุ่ง</label> 
+                <input id="Another"
+                    type="radio"
+                    name="favmusic"/>
+                <label for="Another">อื่นๆ</label>
             </td>
         </tr>
     </table>
-        
-    
-   
+    <br>
+    <input type="checkbox"
+            name="license">ยินยอมให้เก็บข้อมูล<br><br>
+    <button type="button">Reset</button>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <button type="button">Submit</button>
 </body>
 </html>

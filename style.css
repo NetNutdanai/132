@@ -1,0 +1,45 @@
+.content{
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/535/845/69/digital-art-artwork-fantasy-art-planet-sun-hd-wallpaper-preview.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding: 20px;
+    font-size: 20px;
+}
+input{
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+textarea{
+    border-radius: 20px;
+    height: 60px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+select{
+    border-radius: 80px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.reset-box{
+    background-color: #0f9dfc;
+    width: 80px;
+    font-weight:bold;
+    font-size: 15px;
+}
+.submit-box{
+    background-color: #0f9dfc;
+    width: 80px;
+    font-size: 15px;
+    font-weight:bold;
+}
+tr>td{
+    padding-bottom: 10px;
+}
+.Header{
+    background-color: blanchedalmond;
+}
+

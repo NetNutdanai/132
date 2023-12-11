@@ -1,0 +1,34 @@
+.box{
+    width: 400px;
+    height: 400px;
+    color:rgb(0, 0, 0);
+    background-color:rgb(172, 95, 72);
+    border: 4px dotted rgb(0,255,0);
+    padding-top: 10px;
+    margin: 50px 25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-image: url(https://media1.tenor.com/m/Nfct9RreQfUAAAAd/dog-meme.gif);
+    background-position: center;
+    background-size: cover;
+    
+}
+.box:hover{
+    background-color:rgb(118, 11, 82);
+    background-image: url(https://media1.tenor.com/m/0JhCQHd2CNEAAAAC/kid-smile.gif);
+    
+    background-size: 125% ;
+    background-position: center;
+    box-shadow: 34px 34px 26px #036df7
+}
+body{
+    background-image: url(https://media2.giphy.com/media/l41lVsYDBC0UVQJCE/giphy.gif?cid=ecf05e47snlarem82bzttmdgjxr9xnlmaa5kpfp53orvm5my&ep=v1_gifs_search&rid=giphy.gif&ct=g);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1{
+    color:darkkhaki;
+}

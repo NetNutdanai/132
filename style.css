@@ -6,6 +6,8 @@
 
     padding: 20px;
     font-size: 20px;
+    font-family: 'TH SarabunPSK';
+    justify-content: center;
 }
 input{
     border-radius: 10px;
@@ -41,5 +43,8 @@ tr>td{
 }
 .Header{
     background-color: blanchedalmond;
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
 }
 

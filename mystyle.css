@@ -1,0 +1,17 @@
+.scroll {
+    width: 300px;
+    height: 300px;
+    border: 3px solid black; 
+    overflow:auto; 
+    background-color: aliceblue;
+    background-image: url(https://media1.giphy.com/media/xT0GqcCJJJH12hJvGM/giphy.gif?cid=ecf05e473056ak0rjd1nzlvh6korf6q7edq0ak0rac8g6h25&ep=v1_gifs_search&rid=giphy.gif&ct=g);
+    background-size: 110% ;
+    background-position:center;
+    font-size: large;
+}
+body{
+    background-image: url(https://media1.giphy.com/media/3ov9jJuT2pEVMRMas0/giphy.gif?cid=ecf05e47e8dg9hqjo8koubx1lmvxfj138mnuxpsfiq5kaz0d&ep=v1_gifs_related&rid=giphy.gif&ct=g);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

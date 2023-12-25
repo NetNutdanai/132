@@ -17,10 +17,10 @@
             <tr>
             <?php
             if( !empty($multi_x) ) {
-        for( $i=1; $i<=12; $i++ ) {
-            echo"<p>";
-            echo "$multi_x x {$i} = ".( $multi_x *$i)."<br/>";
-            echo"</p>";
+        for( $i=1; $i<=24; $i++ ) {
+            echo"<k>";
+            echo "&nbsp$multi_x x {$i} = ".( $multi_x *$i)."<br/><br/>";
+            echo"</k>";
         }
     }
     ?>       

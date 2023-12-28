@@ -19,14 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('/my-route',function(){
-    echo "<h1>My Route Pages<h1>";
-    $data = ['val_a' => 'Hello World'];
-    $data['val_b'] = "Laravel";
-    return view('myfolder.mypage',$data);
+    return view('myfolder.mypage');
 });
 
 Route::post('/my-route', function(Request $req){
-    // echo $req->input('myinput');
     $data['myinput'] = $req->input('myinput');
     return view('myroute',$data);
 });

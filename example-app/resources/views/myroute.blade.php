@@ -9,10 +9,11 @@
     }
 
     .box {
+        font-family: 'Franklin Gothic Medium';
         width: 350px;
         height: 40px;
         color: rgb(0, 0, 0);
-        background-color:wheat;
+        background-color:rgb(155, 192, 229);
         padding-top: 10px;
         margin: 10px 530px;
         display: flex;
@@ -22,10 +23,12 @@
     }
 
     .multiTable {
+        font-family: 'Franklin Gothic Medium';
+        font-size: large;
         width: 300px;
-        height: 480px;
+        height: 510px;
         color: rgb(0, 0, 0);
-        background-color: wheat;
+        background-color: rgb(155, 192, 229);
         padding-top: 10px;
         margin: 20px 555px;
         display: flex;
@@ -35,6 +38,20 @@
     body{
         background-image: url('https://i.pinimg.com/originals/52/83/59/5283594dd6b1d0dd4b8a59c723a35024.gif');
         background-size: cover;
+    }
+    input{
+        width: 200px;
+        height: 30px;
+        font-size: large;
+        padding-top: 10px;
+        margin: 10px;
+        caret-color: crimson;
+    }
+    button{
+        width: 80px;
+        height: 25px;
+        font-family: 'Franklin Gothic Medium';
+        font-size:medium;
     }
 </style>
 
@@ -53,9 +70,9 @@
     <center>
         <form method="post" action="/my-route">
             @csrf
-            <input type="text" name="myinput" placeholder="กรุณาใส่เลขที่ต้องการ">
+            <input type="text" name="myinput" placeholder="กรุณาใส่เลขที่ต้องการ"><br/>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Next</button>
         </form>
     </center>
 

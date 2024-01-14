@@ -29,12 +29,12 @@ Route::post('/my-route', function(Request $req){
 });
 
 Route::get('/my-controller', [MyController::class, 'index']);
-Route::get('/my-controller2' , 'App\Http\Controller@index' );
 
+Route::get('/my-controller2', 'App\Http\Controllers\MyController@index');
 Route::namespace('App\Http\Controllers')->group(function(){
- Route::get('/my-controller3' , 'MyController@index');
- Route::post('/my-contoller3-post' , 'MyController');
+    Route::get('/my-controller3', 'MyController@index');
+    Route::post('/my-controller3-post', 'MyController@store');
 });
 
-Route::resource('my-contoller4' , MyController::class);
+Route::resource('/my-controller4', MyController::class);
 

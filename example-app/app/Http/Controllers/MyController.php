@@ -8,16 +8,17 @@ class MyController extends Controller
 {
     private $myvar = "Hello World!";
 
-    function __contruct(){
+    function __construct() //MyController
+    {
 
     }
 
     public function index(){
-        return view("myfolder.mypage");
+        return view('home');
     }
 
     public function store(Request $req){
         $data['myinput'] = $req->input('myinput');
-        return view('myroute',$data);
+        return view('myroute', $data);
     }
 }

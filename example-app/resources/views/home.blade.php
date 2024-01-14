@@ -71,9 +71,9 @@
                     <option>Orange</option>
                 </select>
             </div>
-            {{-- --Favourite kind of music-- --}}
+            {{-- --Favourite Song Type-- --}}
             <div class="form-group">
-                <label>Favourite kind of music</label><br />
+                <label>Favourite Song Type</label><br />
                 <input id="R&B" type="radio" name="same-radio" />&nbsp
                 <label><b class="CO">R&B</b></label>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;

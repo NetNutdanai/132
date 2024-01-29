@@ -33,21 +33,19 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="/titles" method="post">
-                            <?php if (hu)
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">คำนำหน้าชื่อ</label>
-                                    <input type="text" value="{{ $title_id->tit_name; }}" name="tit_name" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" name="tit_name" class="form-control" id="exampleInputEmail1"
                                         placeholder="เช่น นาย นาง นางสาว ฯลฯ">
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" name="tit_is_active" class="form-check-input" checked id="exampleCheck1">
+                                    <input type="checkbox" name="tit_is_active" checked class="form-check-input"
+                                        id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">ใช้งาน</label>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">บันทึก</button>
                             </div>

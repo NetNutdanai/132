@@ -10,11 +10,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ url('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="assets//plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ url('assets/dist/css/adminlte.min.css') }}">
 </head>
 
 <body class="hold-transition register-page">
@@ -27,7 +27,8 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="../../index.html" method="post">
+                <form action="{{ url('/register') }}" method="post">
+                    @csrf
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Full name">
                         <div class="input-group-append">
@@ -36,16 +37,21 @@
                             </div>
                         </div>
                     </div>
+                    {{ $errors->first('email') }}
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email"
+                            class="form-control <?php if($errors->has('email')){ ?>is-invalid<?php } ?>" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    {{ $errors->first('password') }}
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password"
+                            class="form-control <?php if($errors->has('password')){ ?>is-invalid<?php } ?>"
+                            placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,7 +59,9 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        <input type="password" name="password_confirmation"
+                            class="form-control <?php if($errors->has('password')){ ?>is-invalid<?php } ?>"
+                            placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -77,7 +85,6 @@
                     </div>
                 </form>
 
-
                 <a href="login" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->
@@ -86,11 +93,11 @@
     <!-- /.register-box -->
 
     <!-- jQuery -->
-    <script src="('assets/plugins/jquery/jquery.min.js')"></script>
+    <script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <script src="('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')"></script>
+    <script src="{{ url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="('assets/dist/js/adminlte.min.js')"></script>
+    <script src="{{ url('assets/dist/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

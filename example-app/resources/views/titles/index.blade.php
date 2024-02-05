@@ -1,8 +1,8 @@
-@extends('layout.default')
+@extends('layouts.default')
 
 @section('title', 'Titles')
 
-@section('contentStarter_Page')
+@section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -12,14 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Titles</a></li>
                     </ol>
-                    <!-- ... (existing code) ... -->
-                    <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-right">
-                        <button type="submit" class="btn btn-danger"><a href="{{ route('logout') }}">Logout</a></button>
-                      </ol>
-                     </div><!-- /.col -->
-                    <!-- ... (existing code) ... -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -65,6 +59,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">บันทึก</button>
                             </div>
+
                         </form>
                     </div>
                     <!-- /.card -->
@@ -118,4 +113,11 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+    <form method="post" action="{{ url('/logout') }}">
+        @csrf
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger"
+                onclick="return confirm('คุณต้องการออกจากระบบ');">ออกจากระบบ</button>
+        </div>
+    </form>
 @endsection

@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\C_titles;
 use App\Http\Controllers\MyAuth;
@@ -16,26 +17,26 @@ use App\Http\Controllers\MyController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome'); // welcome.blade.php
-// });
+Route::get('/', function () {
+    return view('welcome'); // welcome.blade.php
+});
 
-// Route::get('/my-route',function(){
-//     return view('myfolder.mypage');
-// });
+Route::get('/my-route',function(){
+    return view('myfolder.mypage');
+});
 
-// Route::post('/my-route',function(Request $req){
-//     $data['multi_x'] = $req->input('multi_x');
-//     return view('myroute' , $data);
-// });
+Route::get('/home',function(){
+    return view('home');
+});
 
-// Route::post('/my-page', function(Request $req) {
-//     $req->validate([
-//         'back' => 'required|string',
-//     ]);
-//     $data['back'] = $req->input('back');
-//     return view('back', $data);
-// });
+
+Route::post('/my-page', function(Request $req) {
+    $req->validate([
+        'back' => 'required|string',
+    ]);
+    $data['back'] = $req->input('back');
+    return view('back', $data);
+});
 
 Route::post('logout', function () {
     Auth::logout();
@@ -67,18 +68,8 @@ Route::get('/', function () {
     return view('welcome'); // welcome.blade.php
 });
 
-// use Illuminate\Http\Request;
-
-Route::get('/my-route', function () {
-    // return view('myroute');
-    //        Key    =>  Value
-    $data = ['val_a' => 'Hello World!'];
-    $data['val_b'] = "Laravel";
-    return view('myfolder.mypage', $data);
-});
-
-
-Route::post('/my-route', function (Request $req) {
-    $data['myinput'] =  $req->input('myinput');
-    return view('myroute', $data);
-});
+Route::get('students',[StudentController::class, 'index']);
+Route::get('add-student',[StudentController::class, 'create']);
+Route::post('add-student',[StudentController::class, 'store']);
+Route::get('edit-student/{id}',[StudentController::class, 'edit']);
+Route::put('update-student/{id}',[StudentController::class, 'update']);

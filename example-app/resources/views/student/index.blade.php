@@ -1,0 +1,626 @@
+@extends('layouts.default')
+
+<!--Style css-->
+<style>
+    h1 {
+        margin: 0 auto;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    h4 {}
+
+    .image-preview-container {
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 3rem;
+        border-radius: 20px;
+    }
+
+    .image-preview-container img {
+        width: 100%;
+        display: none;
+
+        margin-bottom: 15px;
+    }
+
+    .image-preview-container input {
+        display: none;
+    }
+
+    .image-preview-container label {
+        display: block;
+        width: 75%;
+        height: 45px;
+        margin-left: 12%;
+        text-align: center;
+        background: #E9DAC1;
+        color: #fff;
+        font-size: 15px;
+        text-transform: Uppercase;
+        font-weight: 400;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-preview-container-second {
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 3rem;
+        border-radius: 20px;
+    }
+
+    .image-preview-container-second img {
+        width: 100%;
+        display: none;
+        margin-bottom: 30px;
+    }
+
+    .card-body {
+        background-color: FBF8F1;
+    }
+
+    .image-preview-container-second input {
+        display: none;
+    }
+
+    .image-preview-container-second label {
+        display: block;
+        width: 50%;
+        height: 45px;
+        margin-left: 25%;
+        text-align: center;
+        background: #E9DAC1;
+        color: #fff;
+        font-size: 20px;
+        text-transform: Uppercase;
+        font-weight: 400;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #resetbtn,#resetbtn2 {
+        display: block;
+        width: 50%;
+        height: 45px;
+        margin-left: 25%;
+        text-align: center;
+        color: #fff;
+        font-size: 15px;
+        text-transform: Uppercase;
+        font-weight: 400;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    .box {
+        width: 100%;
+        height: 8vh;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        background-color: FBF8F1;
+    }
+
+    .box input {
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        border: solid 1px #242424;
+        outline: none;
+        padding: 15px;
+        font-size: 16px;
+        background-color: FBF8F1;
+    }
+
+    .box select {
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        border: solid 1px #242424;
+        outline: none;
+        padding: 15px;
+        font-size: 18px;
+        background-color: FBF8F1;
+    }
+
+
+    .box button{
+        width: 100%;
+        height: 90%;
+        border-radius: 10px;
+        border: solid 1px #242424;
+        outline: none;
+        padding: 15px;
+        font-size: 18px;
+        background-color: FBF8F1;
+    }
+
+    button.btn.dropdown-toggle.btn-light{
+        background-color: FBF8F1;
+    }
+
+    div.dropdown-menu.show{
+        background-color: FBF8F1;
+    }
+
+    .inner.show{
+        background-color: FBF8F1;
+    }
+
+    .box textarea {
+        width: 100%;
+        height: 130%;
+        border-radius: 10px;
+        border: solid 1px #242424;
+        outline: none;
+        padding: 15px;
+        font-size: 17px;
+        background-color: FBF8F1;
+    }
+
+    #ProThai {
+        position: absolute;
+        width: 190px;
+        top: -3px;
+        left: 8%;
+        margin: 0px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #ProEng {
+        position: absolute;
+        width: 209px;
+        top: -3px;
+        left: 8%;
+        margin: 1px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #CompanyF {
+        position: absolute;
+        width: 64px;
+        top: -3px;
+        left: 8%;
+        margin: 1px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #AdvisorF {
+        position: absolute;
+        width: 140px;
+        top: -3px;
+        left: 8%;
+        margin: 1px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #FieldF {
+        position: absolute;
+        width: 60px;
+        top: -3px;
+        left: 8%;
+        margin: 1px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #TypeF {
+        position: absolute;
+        width: 77px;
+        top: -3px;
+        left: 4%;
+        margin: 0px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    #DescF {
+        position: absolute;
+        width: 160px;
+        top: -3px;
+        left: 4%;
+        margin: 0px;
+        background-color: FBF8F1;
+        padding: 0 10px;
+        font-weight: 600;
+    }
+
+    /* Add these styles for border in thead cells */
+    #example thead th {
+        text-align: center;
+        border: 1px solid #ddd;
+        /* Adjust the border style as needed */
+        padding: 15px;
+        /* Adjust the padding as needed */
+    }
+
+    #example thead {
+        background-color: #f2f2f2;
+        /* Add a background color if desired */
+    }
+
+
+    #pro_advisor, #pro_company,#pro_field,#pro_descript,#pro_type {
+        width: 100%;
+    }
+
+</style>
+<!--Style css-->
+
+@section('content')
+    <!--Javascript-->
+    <script>
+        window.onload = function() {
+            // Hide the reset button
+            const ele = document.getElementById("resetbtn");
+            ele.style.display = 'none';
+            // Hide the reset button 2
+            const ele2 = document.getElementById("resetbtn2");
+            ele2.style.display = 'none';
+            new DataTable('#example', {
+                "language": {
+                    "search": "", // Remove the default search text
+                }
+            });
+
+        }
+
+        const previewImage = (event, imageNumber, uploadLabelId, resetBtnId) => {
+            const imageFiles = event.target.files;
+            const imageFilesLength = imageFiles.length;
+
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                const imagePreviewElement = document.querySelector(`#preview-selected-image-${imageNumber}`);
+
+                imagePreviewElement.src = imageSrc;
+                imagePreviewElement.style.display = "block";
+                if (imageNumber == 1) {
+                    imagePreviewElement.style.width = "170px";
+                    imagePreviewElement.style.height = "170px";
+                } else if (imageNumber == 2) {
+                    imagePreviewElement.style.width = "700px";
+                    imagePreviewElement.style.height = "150px";
+                }
+
+                const uploadLabel = document.getElementById(uploadLabelId);
+                uploadLabel.style.display = 'none';
+
+                const reBtn = document.getElementById(resetBtnId);
+                reBtn.style.display = 'block';
+            }
+        };
+
+
+        function resetFile(fileInputId, previewImageId, uploadLabelId, resetBtnId) {
+            // ล้างค่า input file โดยการเปลี่ยนค่าในไฟล์ input
+            document.getElementById(fileInputId).value = null;
+
+            // ล้างค่าตัวอย่างรูปภาพ
+            var previewImage = document.getElementById(previewImageId);
+            previewImage.src = null;
+            previewImage.style.display = 'none';
+
+            // Show the upload label and hide the reset button
+            const uploadLabel = document.getElementById(uploadLabelId);
+            uploadLabel.style.display = 'flex';
+
+            // Hide the reset button
+            const resetBtn = document.getElementById(resetBtnId);
+            resetBtn.style.display = 'none';
+        }
+
+
+
+        function matchCustom(params, data) {
+            // If there are no search terms, return all of the data
+            if ($.trim(params.term) === '') {
+                return data;
+            }
+
+            // Do not display the item if there is no 'text' property
+            if (typeof data.text === 'undefined') {
+                return null;
+            }
+
+            // `params.term` should be the term that is used for searching
+            // `data.text` is the text that is displayed for the data object
+            if (data.text.indexOf(params.term) > -1) {
+                var modifiedData = $.extend({}, data, true);
+                modifiedData.text += ' (matched)';
+
+                // You can return modified objects from here
+                // This includes matching the `children` how you want in nested data sets
+                return modifiedData;
+            }
+
+            // Return `null` if the term should not be displayed
+            return null;
+        }
+
+
+    </script>
+    <!--Javascript-->
+
+
+    {{-- <!--List Student-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Laravel 10 Image CRUD
+                            <a href="{{ url('add-student') }}" class="btn btn-primary float-end">Add Student</a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Course</th>
+                                    <th>Image</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($student as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->course }}</td>
+                                        <td>
+                                            <img src="{{ asset('uploads/students/' . $item->profile_image) }}" width="70px"
+                                                height="70px" alt="image">
+                                        </td>
+                                        <td>
+                                            <a href=" {{ url('edit-student/' . $item->id) }} "
+                                                class="btn btn-primary btn-sm">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    <!--DataTable-->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>
+                    ผู้ใช้
+                </h4>
+            </div>
+            <div class="card-body">
+                <table id="example" class="cell-border hover compact">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Image</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($student as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->course }}</td>
+                                <td>
+                                    <img src="{{ asset('uploads/students/' . $item->profile_image) }}" width="70px"
+                                        height="70px" alt="image">
+                                </td>
+                                <td>
+                                    <a href=" {{ url('edit-student/' . $item->id) }} "
+                                        class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Project-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h4>
+                            เพิ่มโปรเจ็กต์
+                        </h4>
+                        <hr><br>
+                        <!--Form-->
+                        <div class="form-body">
+                            <!--Row-->
+                            <div class="row">
+                                <!--Column-->
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="image-preview-container">
+                                        <div class="preview">
+                                            <img id="preview-selected-image-1" />
+                                        </div>
+                                        <label id="upload" for="file-upload-1">อัพโหลดรูปภาพ</label>
+                                        <input type="file" class="form-control select-require" id="file-upload-1"
+                                            accept="image/*" onchange="previewImage(event,1,'upload','resetbtn');" />
+                                        <button id="resetbtn"
+                                            onclick="resetFile('file-upload-1', 'preview-selected-image-1','upload','resetbtn')"
+                                            class="btn btn-danger btn-sm">ลบรูปภาพ</button>
+
+                                        <p style="text-align: center; font-size: 9px;color:black"><span
+                                                style="color:red;font-size:13px">*</span>ขนาดรูปภาพที่แนะนำ :
+                                            400x500 pixels<span style="color:red;font-size:13px">*</span></p>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-9">
+                                    <div class="image-preview-container-second">
+                                        <div class="preview">
+                                            <img id="preview-selected-image-2" />
+                                        </div>
+                                        <label id="upload2" for="file-upload-2">อัพโหลดรูปภาพ</label>
+                                        <input type="file" class="form-control select-require" id="file-upload-2"
+                                            accept="image/*" onchange="previewImage(event,2,'upload2','resetbtn2');" />
+                                        <button id="resetbtn2"
+                                            onclick="resetFile('file-upload-2', 'preview-selected-image-2','upload2','resetbtn2')"
+                                            class="btn btn-danger btn-sm">ลบรูปภาพ</button>
+                                        <p style="text-align: center; font-size: 12px;color:black"><span
+                                                style="color:red;font-size:17px">*</span>ขนาดรูปภาพที่แนะนำ :
+                                            400x500 pixels<span style="color:red;font-size:17px">*</span></p>
+                                    </div>
+                                </div>
+                                <!--Column-->
+                            </div>
+                            <!--Row-->
+                            <hr><br>
+                            <!--Row-->
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="box" name="boxproject">
+                                        <input type="text" name="pro_th" id="pro_th">
+                                        <p id="ProThai">ชื่อโปรเจกต์(ภาษาไทย)</p>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="box" name="boxproject">
+                                        <input type="text" class="form-control select-require" name="pro_th"
+                                            id="pro_en">
+                                        <p id="ProEng">ชื่อโปรเจกต์(ภาษาอังกฤษ)</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="box">
+                                        <select class="selectpicker" data-size="7" data-live-search="true" data-width="100%" id="pro_company">
+                                            <option value="" disabled selected>-</option>
+                                            <option value="1">TTT Brother</option>
+                                            <option value="2">ClickNext</option>
+                                            <option value="3">อสมท.</option>
+                                            <option value="4">บริษัท กรีนฮับ จำกัด</option>
+                                            <option value="5">สำนักงานกองทุนสนับสนุนการสร้างเสริมสุขภาพ (สสส.)</option>
+                                            <option value="6">Soft Square International Co,Ltd</option>
+                                            <option value="7">บริษัท สยาม เด็นโซ่ แมนูแฟคเจอริ่ง จำกัด</option>
+                                        </select>
+                                        <p id="CompanyF">บริษัท</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box">
+                                        <select class="selectpicker" data-width="100%" id="pro_advisor">
+                                            <option value="" disabled selected>-</option>
+                                            <option value="1">อาจารย์จิรายุส อาบกิ่ง</option>
+                                            <option value="2">อาจารย์อภิสิทธิ์ แสงใส</option>
+                                            <option value="3">อาจารย์วันทนา ศรีสมบูรณ์</option>
+                                            <option value="4">ดร.อธิตา อ่อนเอื้อน</option>
+                                            <option value="5">ดร.ณัฐพร ภักดี</option>
+                                            <option value="6">อาจารย์พีระศักดิ์ เพียรประสิทธิ์</option>
+                                        </select>
+                                        <p id="AdvisorF">อาจารย์ที่ปรึกษา</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="box">
+                                        <select class="selectpicker" data-width="100%" id="pro_field">
+                                            <option value="" disabled selected>-</option>
+                                            <option value="1">SE</option>
+                                            <option value="2">AI</option>
+                                            <option value="3">CS</option>
+                                            <option value="4">IT</option>
+                                            <a href="{{ url('add-student') }}">Add Student</a>
+
+                                        </select>
+                                        <p id="FieldF">สาขา</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="box">
+                                        <select class="selectpicker" data-width="100%" data-live-search="true" id="pro_type">
+                                            <option value="" disabled selected>-</option>
+                                            <option value="1">Management</option>
+                                            <option value="2">Sale</option>
+                                            <option value="3">CS</option>
+                                            <option value="4">IT</option>
+                                        </select>
+                                        <p id="TypeF">ประเภท</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="box">
+                                        <textarea id="pro_descript" rows="3" maxlength="250"></textarea>
+                                        <p id="DescF">คำอธิบายโปรเจกต์</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--Row-->
+                            <hr><br>
+                        </div>
+                        <!--Form-->
+
+                        <div class="row">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

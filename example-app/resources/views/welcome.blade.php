@@ -1,210 +1,427 @@
-{{-- <!doctype html>
-<html>
-
-<head>
-    <title>Javascript 101</title>
-</head>
-
-<body>
-    <h1 id="myh1">
-    </h1>
-    <button onclick="alert('Hello World!')">Click Me!</button>
-    <input type="text" id="my_number" value="10">
-    <button onclick="myFunction()">submit number</button>
-    <br>
-    <br>
-    <button onclick="myFunction2()">submit my function2</button>
-    <br>
-    <table id="my_table">
-        <thead>
-            <tr>
-                <td>#</td>
-                <td>result</td>
-            </tr>
-        </thead>
-        <tbody id="my_tbody">
-
-        </tbody>
-    </table>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            console.log("Hello World - document.ready")
-            console.log($('#myh1').text())
-            console.log($('#my_number').val())
-            $('#myh1').text("แม่สูตรคูณ")
-            $('#my_number').val(24)
-            // setInterval(() => {
-            //     $('#myh1').after(`<h1 class="my_gen_number">setInterval</h1>`)
-            // }, 2000);
-        });
-
-        function myFunction2() {
-            // $($('#my_table').children()[1]).html("<tr><td>1</td><td>test</td></tr>")
-            let my_number = parseInt($('#my_number').val())
-            let my_code_tr = ``
-            for (let i = 1; i <= 24; i++) {
-                    my_code_tr += "<tr><td>" + my_number + " x " + i + " = " + (my_number * i) + "</td></tr>";
-                }
-            $('#my_tbody').html(my_code_tr)
-        }
-
-        function myFunction() {
-            let my_number = parseInt($('#my_number').val())
-            for (let i = 0; i < my_number; i++) {
-                $('#myh1').after(`<h1 class="my_gen_number">${i}</h1>`)
-            }
-            console.log(document.getElementById('my_number').value);
-            console.log('Click submit number')
-
-            setTimeout(function() {
-                $('.my_gen_number').each(function(index, val) {
-                    $(val).remove();
-                    //val.remove()
-                })
-            }, 2000);
-
-        }
-        console.log("Hello World!")
-        let myval;
-        console.log(typeof myval);
-        myval = '10';
-        myval2 = '2';
-        console.log(myval, myval2);
-        myval3 = parseInt(myval) + myval2;
-        console.log(myval3)
-        myval3 = myval - myval2;
-        console.log(myval3)
-        myval3 = myval * myval2;
-        console.log(myval3)
-        myval3 = myval / myval2;
-        console.log(myval3)
-    </script>
-    <script>
-        let myval4 = [1, 2, 3, 4];
-
-        myval4[5] = 5;
-        myval4[6] = [6, 5, 4, 5]
-        console.log(myval4)
-
-        for (i = 0; i < myval4.length; i++) {
-            console.log("in for", myval4[i])
-        }
-        myval4.forEach(function(value, index) {
-            console.log("in forEach", value, index)
-        });
-
-        console.log(document.getElementById('myh1').innerHTML)
-        /*
-        // php
-        foreach($myval4 as $index => $value){
-
-        }
-        */
-    </script>
-
-</body>
-</html> --}}
-
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Javascript 101</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
 </head>
 
-<body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <center>
-        <h1> Multiplication Table </h1>
-    </center>
-    <style>
+<style>
+    @font-face {
+        font-family: "HelveticaNow";
+        src: url(https://assets.codepen.io/5286152/HelveticaNowText-Regular.ttf);
+    }
 
-        button{
-            padding: 7px;
-        }
-        #my_number{
-            width: 160px;
-            height: 25px;
-            border: 2px solid black;
-            font-size: medium;
-            margin: 10;
-            text-indent: 5px;
-        }
-        #submit {
-            background-color: rgb(92, 239, 92);
-            border-radius: 20px;
-        }
+    .introcontainer {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
 
-        #submit:hover {
-            background-color: rgb(12, 190, 6);
-        }
+    .swiper-container {
+        width: 100%;
+        height: 100vh;
+        background: rgb(10, 10, 11);
+    }
 
-        #clear {
-            background-color: rgb(240, 121, 100);
-            border-radius: 20px;
-        }
+    .swiper-slide {
+        width: 500px;
+        height: 100%;
+        display: flex;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        background: rgb(10, 10, 11);
+    }
 
-        #clear:hover {
-            background-color: rgb(243, 46, 12);
-        }
-        b{
-            font-style: inherit;
-            font-family:'Lucida Sans';
-            font-size: 17px;
-        }
-        h1{
-            width: 500px;
+    .cards {
+        width: 100%;
+        height: auto;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card img {
+        object-fit: cover;
+        width: 600px;
+        border-radius: 5px;
+        max-width: 100%;
+        height: auto;
+        min-height: 50vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card.two img {
+        filter: sepia(100%) hue-rotate(190deg) saturate(300%);
+    }
+
+    .card.three img {
+        height: 50vh;
+    }
+
+    .card.four img {
+        filter: invert(4%) sepia(75%) saturate(500%) hue-rotate(356deg) brightness(70%) contrast(103%);
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0px;
+        max-width: 100%;
+        width: 500px;
+
+    }
+
+    .title-box {
+        display: flex;
+        text-align: left;
+        max-width: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 0 !important;
+        bottom: 50px;
+        justify-content: center;
+        color: #fff;
+        opacity: 0;
+        z-index: 15;
+    }
+
+    .title-box h1 {
+        display: block;
+        font-family: "Futura";
+        font-weight: 700;
+        line-height: normal;
+        max-width: 100%;
+        font-size: 3vmin;
+    }
+
+    .title-box p {
+        font-family: "HelveticaNow";
+        font-size: 2vmin;
+        padding-top: 0;
+        margin: 0;
+        padding-left: 1%;
+        max-width: 100%;
+    }
+
+    .card .title-box .seperator {
+        height: 1px;
+        width: 10%;
+        background: white;
+        position: absolute;
+        content: "";
+        left: -15%;
+        top: 50%;
+    }
+
+    .swiper-slide .title-box {
+        transform: translateX(-50%);
+        transition: all .7s ease .3s;
+    }
+
+    .swiper-slide-active .title-box {
+        transform: translateX(0%);
+        opacity: 1;
+        transition: all .7s ease;
+    }
+
+    .swiper-scrollbar {
+        background: white;
+    }
+
+    .swiper-slide .card img {
+        transition: filter .7s ease;
+        filter: grayscale(100%);
+    }
+
+    .swiper-slide-active .card img {
+        filter: grayscale(0%) brightness(60%);
+    }
+
+    .swiper-pagination-bullet-active {
+        background: white !important;
+        width: 25px !important;
+        height: 5px !important;
+        border-radius: 0 !important;
+    }
+
+    .swiper-pagination-bullet {
+        background: whitesmoke !important;
+        width: 25px !important;
+        height: 5px !important;
+        border-radius: 0 !important;
+    }
+
+    .swiper-arrows {
+        width: 100%;
+        height: 80px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 50%;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 80px !important;
+        height: 80px;
+        background-image: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        margin: 0;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .swiper-button-prev {
+        left: 0px !important;
+        right: auto !important;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .swiper-button-next {
+        right: 0px !important;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .swiper-button-prev span,
+    .swiper-button-next span {
+        width: 10px;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        position: absolute;
+        border: solid 2px #666;
+        border-left: 0;
+        border-bottom: 0;
+        transition: all 0.1s ease;
+    }
+
+    .swiper-button-prev span {
+        transform: rotate(-135deg);
+        left: 49%;
+    }
+
+    .swiper-button-next span {
+        transform: rotate(45deg);
+        right: 49%;
+    }
+
+    .swiper-button-prev:hover span,
+    .swiper-button-next:hover span {
+        width: 5px;
+        height: 5px;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        width: 0px;
+        height: inherit;
+        content: "";
+        position: absolute;
+        border-radius: 5px;
+        background-color: white;
+        transition: all 0.4s ease-in-out;
+        z-index: -1;
+        opacity: 0.8;
+    }
+
+    .swiper-button-prev:after {
+        right: 0;
+    }
+
+    .swiper-button-next:after {
+        left: 0;
+    }
+
+    .swiper-button-prev:hover:after,
+    .swiper-button-next:hover:after {
+        width: inherit;
+    }
+
+    .swiper-button-disabled {
+        opacity: 1 !important;
+    }
+
+    .swiper-button-disabled.swiper-button-prev span,
+    .swiper-button-disabled.swiper-button-next span {
+        opacity: 0.2;
+    }
+
+    @media screen and (max-width: 512px) {
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 60px;
             height: 60px;
-            font-family: 'Lucida Sans';
-            background-color: antiquewhite;
-            display: flex;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
+            bottom: 0;
         }
-        tr,th{
-            font-size: 20px;
-        }
-        input{
-            border-radius: 10px;
-        }
-    </style>
-    <center>
-        <div>
-            <label for="number"><b>Input Number : </b></label>
-            <input type="number" id="my_number">
-            <button id="submit">OK</button>
-            <button id="clear">Clear</button>
-        </div>
 
-        <div id="table">
-            <!-- Table will be generated here -->
+        .swiper-arrows {
+            height: 60px;
+        }
+
+        .swiper-button-prev {
+            right: 60px;
+        }
+
+        .swiper-button-prev span {
+            left: 45%;
+        }
+
+        .swiper-button-next span {
+            right: 45%;
+        }
+    }
+
+    .swiper-button-next::after,
+    .swiper-container-rtl .swiper-button-prev::after {
+        content: "attr" !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-container-rtl .swiper-button-prev::after {
+        content: "attr" !important;
+    }
+</style>
+
+<body>
+    <div class="introcontainer">
+        <!-- Slider main container -->
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="cards">
+                        <div class="card ong">
+                            <img src="https://assets.codepen.io/5286152/pexels-wendy-wei-1886641_1.jpg" />
+                            <div class="text">
+                            </div>
+                            <div class="title-box">
+                                <h1>CREATIVE COLLECTIVE.</h1>
+                                <p>The future of the creative industry starts here, by Creatives, for Creatives.</p>
+                                <div class="seperator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cards">
+                        <div class="card two">
+                            <img src="https://assets.codepen.io/5286152/BW-DJ.jpeg" alt="" />
+                            <div class="text">
+                            </div>
+                            <div class="title-box">
+                                <h1>FOR ARTISTS.</h1>
+                                <p>Learn, grow, and develop your skills -- Access tools that accelerate your career and
+                                    build your audience.</p>
+                                <div class="seperator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cards">
+                        <div class="card three">
+                            <img src="https://assets.codepen.io/5286152/stephany-lorena-TZ1A9R_WzGs-unsplash.jpg"
+                                alt="" />
+                            <div class="text">
+                            </div>
+
+                            <div class="title-box">
+                                <h1>FOR CREATIVES.</h1>
+                                <p>Share, distribute, and promote your artwork. We showcase and highlight creativity,
+                                    helping you find and connect with clients and your fans.</p>
+                                <div class="seperator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cards">
+                        <div class="card four">
+                            <img src="https://assets.codepen.io/5286152/clark-van-der-beken-1KBCgRD8BDc-unsplash.jpg"
+                                alt="" />
+                            <div class="text">
+                            </div>
+
+                            <div class="title-box">
+                                <h1>FOR DESIGNERS.</h1>
+                                <p> We design your digital presence and collaborate to develop your ideas into engaging,
+                                    interactive, art and visual experiences that keep you in control and in the
+                                    spotlight.</p>
+                                <div class="seperator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cards">
+                        <div class="card three">
+                            <img src="https://assets.codepen.io/5286152/stephany-lorena-TZ1A9R_WzGs-unsplash.jpg"
+                                alt="" />
+                            <div class="text">
+                            </div>
+
+                            <div class="title-box">
+                                <h1>FOR CREATIVES.</h1>
+                                <p>Share, distribute, and promote your artwork. We showcase and highlight creativity,
+                                    helping you find and connect with clients and your fans.</p>
+                                <div class="seperator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-arrows">
+                <div class="swiper-button-prev"><span></span></div>
+                <div class="swiper-button-next"><span></span></div>
+            </div>
+
+            <!-- If we need scrollbar -->
         </div>
-    </center>
+    </div>
     <script>
-        $(document).ready(function() {
-            $("#submit").click(function() {
-                let number = $("#my_number").val();
-                let result = "<tr><th><br>Mutiplication " + number + "</th></tr>";
-                for (let i = 1; i <= 24; i++) {
-                    result += "<tr><td>" + number + " x " + i + " = " + (number * i) + "</td></tr>";
-                }
-                $("#table").html(result);
-            });
-
-            $("#clear").click(function() {
-                clearTable();
-            });
-
-            function clearTable() {
-                $("#my_number").val("");
-                $("#table").empty();
-            }
+        const swiper = new Swiper('.swiper-container', {
+            speed: 500,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            centeredSlides: true,
+            paginationClickable: true,
+            watchSlidesProgress: true,
+            loop: true,
+            slidesPerView: 2,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
     </script>
-
-
 </body>
 
 </html>

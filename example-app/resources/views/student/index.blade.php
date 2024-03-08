@@ -143,6 +143,21 @@
             background-color: #ffffff;
         }
 
+        span.select2-selection.select2-selection--single {
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+            border: solid 1px #242424;
+            outline: none;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #ffffff;
+        }
+
+        span.select2-selection__arrow {
+            margin-top: 13px;
+        }
+
 
         .box button {
             width: 100%;
@@ -282,20 +297,18 @@
 
         /* เปลี่ยนสีขอบของตาราง */
         #example1 th {
-            border-bottom-color: #006aff;
+            border-color: #585858;
+            border-top-width: 1px;
+            border-bottom-width: 1px;
             /* เปลี่ยนสีตามที่คุณต้องการ */
         }
 
-        #example1 td {
-            border-color: #006aff;
-            /* เปลี่ยนสีตามที่คุณต้องการ */
-        }
 
         /* เปลี่ยนสีพื้นหลังของ header ของตาราง */
         #example1 thead {
-            background-color: #7a7979;
+            background-color: #ffffff;
             /* เปลี่ยนสีตามที่คุณต้องการ */
-            color: white;
+            color: rgb(0, 0, 0);
             /* เปลี่ยนสีตัวอักษรใน header ตามที่คุณต้องการ */
         }
 
@@ -303,7 +316,7 @@
         /* ปรับสีขอบของ Pagination */
         #example1_paginate .paginate_button {
             border-radius: 20px;
-            margin: 0 5px;
+            margin: 0 2px;
             /* กำหนดระยะห่างระหว่างปุ่ม */
         }
 
@@ -324,6 +337,8 @@
 
         /* ปรับขนาดของ Dropdown แสดงหน้าที่ */
         #example1_paginate .paginate_button .page-link {
+            background-color: rgb(50, 50, 50);
+            color: #ffffff;
             font-size: 14px;
             /* ปรับขนาด Text */
         }
@@ -361,7 +376,23 @@
 
             $(document).ready(function() {
                 $('.js-example-basic-single').select2();
+                $(".js-example-basic-hide-search").select2({
+                    minimumResultsForSearch: Infinity
+                });
+                $(".js-example-tags").select2({
+                    tags: true
+                });
             });
+
+            // Wait for the document to be fully loaded
+            document.addEventListener("DOMContentLoaded", function() {
+                // Add an event listener to the majorButton
+                document.getElementById('majorButton').addEventListener('click', function() {
+                    // Handle the button click event (you can add your custom logic here)
+                    alert('Button Clicked!');
+                });
+            });
+
         };
 
 
@@ -443,7 +474,7 @@
 
                                 <td style="text-align: center;padding:0px;padding-top:5px;padding-bottom:5px">
                                     <form method="POST" style="margin-bottom: 0%">
-                                        <a href="{{ url('edit-student/' . $item->id) }}" class="btn btn-primary"
+                                        <a href="{{ url('edit-student/' . $item->id) }}" class="btn btn-secondary"
                                             style="width:30px;justify-content:center;padding-left:6px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -461,10 +492,6 @@
                 </table>
             </div>
             <!-- /.card-body -->
-            <select class="js-example-basic-single" name="state">
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-            </select>
         </div>
         <!-- /.card -->
     </div>
@@ -541,8 +568,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="box">
-                                        <select class="selectpicker" data-size="7" data-live-search="true"
-                                            data-width="100%" id="pro_company">
+                                        <select class="js-example-basic-single" name="company" id="pro_company">
                                             <option value="" disabled selected>-</option>
                                             <option value="1">TTT Brother</option>
                                             <option value="2">ClickNext</option>
@@ -558,7 +584,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="box">
-                                        <select class="selectpicker" data-width="100%" id="pro_advisor">
+                                        <select class="js-example-basic-hide-search" name="advisor" id="pro_advisor">
                                             <option value="" disabled selected>-</option>
                                             <option value="1">อาจารย์จิรายุส อาบกิ่ง</option>
                                             <option value="2">อาจารย์อภิสิทธิ์ แสงใส</option>
@@ -572,22 +598,20 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="box">
-                                        <select class="selectpicker" data-width="100%" id="pro_field">
+                                        <select class="js-example-basic-hide-search custom-select-with-button"
+                                            name="major" id="pro_major">
                                             <option value="" disabled selected>-</option>
                                             <option value="1">SE</option>
                                             <option value="2">AI</option>
                                             <option value="3">CS</option>
                                             <option value="4">IT</option>
-                                            <a href="{{ url('add-student') }}">Add Student</a>
-
                                         </select>
                                         <p id="FieldF">สาขา</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="box">
-                                        <select class="selectpicker" data-width="100%" data-live-search="true"
-                                            id="pro_type">
+                                        <select class="js-example-tags" multiple="multiple" name="tag" id="pro_type">
                                             <option value="" disabled selected>-</option>
                                             <option value="1">Management</option>
                                             <option value="2">Sale</option>

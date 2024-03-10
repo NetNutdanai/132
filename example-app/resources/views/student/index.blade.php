@@ -465,7 +465,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $item)
+                        @foreach ($user as $item)
                             <tr>
                                 <td style="text-align: center;padding:0px;padding-top:10px">{{ $item->id }}</td>
                                 <td style="padding:0px;padding-top:10px;padding-left:10px">{{ $item->name }}</td>
@@ -474,13 +474,13 @@
 
                                 <td style="text-align: center;padding:0px;padding-top:5px;padding-bottom:5px">
                                     <form method="POST" style="margin-bottom: 0%">
-                                        <a href="{{ url('edit-student/' . $item->id) }}" class="btn btn-secondary"
+                                        <a href="{{ url('edit-student/' . $item->user_id) }}" class="btn btn-secondary"
                                             style="width:30px;justify-content:center;padding-left:6px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         @csrf
                                         @method('DELETE')
-                                        <button action="{{ url('delete-student/' . $item->id) }}" type="submit"
+                                        <button action="{{ url('delete-student/' . $item->user_id) }}" type="submit"
                                             class="btn btn-danger btn-sm" style="height:30px;width:30px">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>

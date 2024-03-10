@@ -62,6 +62,10 @@
             // Hide the reset button
             const ele = document.getElementById("resetbtn");
             ele.style.display = 'none';
+            $(document).ready(function() {
+                $('.select-role').select2();
+
+            });
         };
 
         const previewImage = (event, imageNumber, uploadLabelId, resetBtnId) => {
@@ -116,7 +120,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('add-student') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('add-users') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -125,7 +129,7 @@
                                             <img id="preview-selected-image-1" style="border-radius: 50%" />
                                         </div>
                                         <label id="upload" for="file-upload-1">อัพโหลดรูปภาพ</label>
-                                        <input type="file" class="form-control select-require" id="file-upload-1"
+                                        <input type="file" class="form-control select-require" id="file-upload-1" name=""
                                             accept="image/*" onchange="previewImage(event,1,'upload','resetbtn');" />
                                         <button id="resetbtn"
                                             onclick="resetFile('file-upload-1', 'preview-selected-image-1','upload','resetbtn')"
@@ -143,15 +147,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">ชื่อ</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="fname" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">นามสกุล</label>
-                                    <input type="text" name="surname" class="form-control" required>
+                                    <input type="text" name="lname" class="form-control" required>
                                 </div>
                                 <div class="col-md-6" style="padding-top:5px;">
                                     <label for="">บทบาท</label>
-                                    <input type="text" name="role" class="form-control">
+                                    <select class="select-role" name="role" style="width:100%;height:100%">
+                                        <option value="admin">Admin</option>
+                                        <option value="student">Student</option>
+                                        <option value="member">Member</option>
+                                    </select>
+
                                 </div>
                                 <div class="col-md-6" style="padding-top:5px;">
                                     <label for="">สาขา</label>

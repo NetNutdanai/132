@@ -82,4 +82,5 @@ Route::put('update-student/{id}',[StudentController::class, 'update']);
 Route::delete('delete-student/{id}', [StudentController::class, 'destroy']);
 
 
-Route::get('/tags',[TagController::class, 'index']);
+Route::get('/tags',[TagController::class, 'index']) -> name('tags.index');
+Route::post('/tags',[TagController::class, 'store'])-> name('tags.store');

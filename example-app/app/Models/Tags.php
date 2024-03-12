@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tags extends Model
 {
     use HasFactory;
+
+    public $timestamps = true;
     protected $table = 'oeis_tags';
 
     protected $fillable = [

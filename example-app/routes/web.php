@@ -7,6 +7,10 @@ use App\Http\Controllers\MyAuth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\TagController;
+
+use App\Models\Tags;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,3 +80,6 @@ Route::get('edit-student/{id}',[StudentController::class, 'edit']);
 Route::put('update-student/{id}',[StudentController::class, 'update']);
 // Route::get('delete-student/{id}', [StudentController::class, 'destroy']);
 Route::delete('delete-student/{id}', [StudentController::class, 'destroy']);
+
+
+Route::get('/tags',[TagController::class, 'index']);

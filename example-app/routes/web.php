@@ -87,4 +87,3 @@ Route::post('/tags',[TagController::class, 'store'])-> name('tags.store');
 
 Route::get('/tags/{tags}/route', [TagController::class, 'edit'])->name('tags.edit');
 Route::put('/tags/{tags}/update', [TagController::class, 'update'])->name('tags.update');
-

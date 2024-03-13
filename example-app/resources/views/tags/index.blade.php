@@ -28,10 +28,10 @@
                                         <td>{{ $item->tag_id }}</td>
                                         <td>{{ $item->tag_name }}</td>
                                         <td>
-                                            <a href="{{url('tags.edit', $tag)}}" class ="btn btn-primary" data-toggle="modal"
-                                                data-target="#edittag"><i class="fas fa-edit"></i></a>
                                             <form method="POST">
                                                 @csrf
+                                                @method('put')
+                                                <a href="#" class ="btn btn-primary"><i class="fas fa-edit"></i></a>
                                                 @method('delete')
                                                 <a href="#" class ="btn btn-danger"><i
                                                         class="fas fa-trash-alt"></i></a>
@@ -47,7 +47,7 @@
         </div>
     </div>
     @include('tags.add-modal')
-    @include('tags.edit-modal')
+    {{-- @include('tags.edit-modal') --}}
     <script>
         window.onload = function() {
             $('#example1').DataTable({

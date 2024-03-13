@@ -28,17 +28,21 @@ class TagController extends Controller
         return redirect('/tags');
     }
 
+
     public function edit(Tags $tag){
-        return view('tags.edit-modal',$tag);
+        return view('tags.edit-modal', compact('tag'));
     }
 
-
-    public function update(Tags $tag, Request $request){
-        $data = $request -> validate([
-            'name' => 'required',
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'tag_name' => 'required|string|max:255',
         ]);
-        $tag ->  update($data);
-        return redirect(route('tags.index')) -> with('success', 'Product Updated Successfully');
+
+        $tag = Tags::findOrFail($id);
+        $tag->update($data);
+
+        return redirect()->route('tags.index')->with('success', 'Tag updated successfully');
     }
 
 }

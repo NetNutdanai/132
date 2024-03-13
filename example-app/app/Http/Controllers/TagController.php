@@ -27,4 +27,18 @@ class TagController extends Controller
         // DB::statement('ALTER TABLE oeis_tags AUTO_INCREMENT = 1;');
         return redirect('/tags');
     }
+
+    public function edit(Tags $tag){
+        return view('tags.edit-modal',$tag);
+    }
+
+
+    public function update(Tags $tag, Request $request){
+        $data = $request -> validate([
+            'name' => 'required',
+        ]);
+        $tag ->  update($data);
+        return redirect(route('tags.index')) -> with('success', 'Product Updated Successfully');
+    }
+
 }

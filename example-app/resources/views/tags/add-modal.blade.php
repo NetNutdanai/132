@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action = "{{route('tags.store')}}">
+            <form method="POST" action = "{{url('tags.store')}}">
                 @csrf
                 @method('post')
                 <div class="modal-body">

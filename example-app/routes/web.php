@@ -86,4 +86,7 @@ Route::get('/tags',[TagController::class, 'index']) -> name('tags.index');
 
 Route::post('/tags',[TagController::class, 'store'])-> name('tags.store');
 
-Route::patch('/tags/{tag_id}/update', [TagController::class, 'update'])->name('tags.update');
+Route::patch('/tags/update/{tag_id}', [TagController::class, 'update'])->name('tags.update');
+
+
+Route::delete('/tags/{tag_id}/deleter',[TagController::class, 'destroy'])-> name('tags.destroy');

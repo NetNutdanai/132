@@ -24,20 +24,18 @@
                             </thead>
                             <tbody>
                                 @foreach ($tag as $item)
-                                    <tr>
-                                        <td>{{ $item->tag_id }}</td>
-                                        <td>{{ $item->tag_name }}</td>
-                                        <td>
-                                            <a class ="btn btn-primary" data-toggle="modal"
-                                                data-target="#edittag" data-tagid="{{ $item->tag_id }}"><i class="fas fa-edit"></i></a>
-                                            <form method="POST">
-                                                @method('delete')
-                                                <a class ="btn btn-danger"><i
-                                                        class="fas fa-trash-alt"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td>{{ $item->tag_id }}</td>
+                                    <td>{{ $item->tag_name }}</td>
+                                    <td>
+                                        <a class="btn btn-primary edit-tag" data-toggle="modal" data-target="#edittag{{ $item->tag_id }}"><i class="fas fa-edit"></i></a>
+                                        <form method="POST">
+                                            @method('delete')
+                                            <a class ="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -46,7 +44,9 @@
         </div>
     </div>
     @include('tags.add-modal')
-    @include('tags.edit-modal')
+    @foreach ($tag as $item)
+        @include('tags.edit-modal', ['item' => $item])
+    @endforeach
     <script>
         window.onload = function() {
             $('#example1').DataTable({
@@ -70,28 +70,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#confirmAdd').click(function() {
-                var labelName = $('#labelName').val();
-
-                $.ajax({
-                    url: {{ url('tags.store') }},
-                    type: 'POST',
-                    data: {
-                        label_name: labelName,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        // Handle success, e.g., show a success message or reload the page
-                        console.log(response);
-                        $('#addModal').modal('hide');
-                    },
-                    error: function(xhr) {
-                        // Handle error
-                        console.log(xhr.responseText);
-                    }
-                });
+            $('.edit-tag').click(function() {
+                var tagId = $(this).data('tagid');
+                var tagName = $(this).closest('tr').find('td:eq(1)').text();
+                $('#tag_name' + tagId).val(tagName);
             });
         });
     </script>
-    
 @endsection
